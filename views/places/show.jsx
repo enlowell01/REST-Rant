@@ -17,16 +17,20 @@ function show (data) {
             let sumRatings = data.place.comments.reduce((tot, c) => {
                 return tot + c.stars
             }, 0)
-            let averageRating = sumRatings / data.place.comments.length
+            let averageRating = Math.round(sumRatings / data.place.comments.length)
+            let stars = ''
+            for (let i = 0; i < averageRating; i++) {
+                stars += '⭐️'
+            }
             rating = (
                 <h3>
-                    {Math.round(averageRating)} stars
+                    {stars} stars
                 </h3>
             )
             return (
                 <div className="border">
                     <h2 className="rant">
-                        {c.rant ? 'Rant!' : 'Rave!'}
+                        {c.rant ? 'Rant! 😡' : 'Rave! 😻'}
                     </h2>
                     <h4>{c.content}</h4>
                     <h3>
